@@ -14,70 +14,70 @@ questions={
         10:"Which videos have the highest number of comments, and what are their corresponding channel names?"
     }
 
-def sql_q1(): # what are the names of all the videos and their corresponding channels?
+def q1(): # what are the names of all the videos and their corresponding channels?
     sql_query = f"""select Title,Channel_name from vedios"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['Vedio Name', 'Channel Name'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q2(): # Which channels have the most number of videos, and how many videos do they have?,
+def q2(): # Which channels have the most number of videos, and how many videos do they have?,
     sql_query=f"""SELECT Channel_name, Total_videos FROM channels ORDER BY Total_videos DESC"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['channel Name','vedio count'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q3(): # What are the top 10 most viewed videos and their respective channels
+def q3(): # What are the top 10 most viewed videos and their respective channels
     sql_query=f"""SELECT Channel_name,Title,Views FROM vedios ORDER BY Views DESC LIMIT 10"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['channel Name','vedio','Total views'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q4():# How many comments were made on each video, and what are their corresponding video names
+def q4():# How many comments were made on each video, and what are their corresponding video names
     sql_query=f"""SELECT Title,Comments FROM vedios"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['vedio','Total Comment'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q5():#Which videos have the highest number of likes, and what are their corresponding channel names
+def q5():#Which videos have the highest number of likes, and what are their corresponding channel names
     sql_query=f"""SELECT Channel_name,Title,Likes FROM vedios ORDER BY Likes DESC"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['channel Name','vedio','Total Like Count'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q6():#What is the total number of likes and dislikes for each video, and what are their corresponding video names
+def q6():#What is the total number of likes and dislikes for each video, and what are their corresponding video names
     sql_query=f"""SELECT Title,Likes,Dis_likes FROM vedios ORDER BY Likes DESC"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['vedio','Total Likes','Total DisLike'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q7():#What is the total number of views for each channel, and what are their corresponding channel names
+def q7():#What is the total number of views for each channel, and what are their corresponding channel names
     sql_query=f"""SELECT Channel_name,Views FROM channels"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['Channel Name','Total Views'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q8():# What are the names of all the channels that have published videos in the year 2022
+def q8():# What are the names of all the channels that have published videos in the year 2022
     sql_query=f"""SELECT DISTINCT(Channel_name) FROM vedios WHERE YEAR(Published_date) = 2022"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['Channel Name'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q9():# What is the average duration of all videos in each channel, and what are their corresponding channel names
+def q9():# What is the average duration of all videos in each channel, and what are their corresponding channel names
     sql_query=f"""SELECT Channel_name,AVG(Duration) AS duration FROM vedios GROUP by Channel_name ORDER BY duration DESC"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
     df = pd.DataFrame(result, columns=['Channel Name','Duration'])# Fetch the result into a Pandas DataFrame
     return df
 
-def sql_q10():# Which videos have the highest number of comments, and what are their corresponding channel names
+def q10():# Which videos have the highest number of comments, and what are their corresponding channel names
     sql_query=f"""SELECT Channel_name,Title,Comments FROM vedios ORDER BY Comments DESC"""
     my_sql_cursor.execute(sql_query)
     result = my_sql_cursor.fetchall()
