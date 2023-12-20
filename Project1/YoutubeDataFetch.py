@@ -3,13 +3,6 @@ import streamlit as st
 import re
 
 def convert_duration(duration):
-#    parsed_duration = re.search(f"PT(\d+H)?(\d+M)?(\d+S)", duration).groups()
-#    duration_str = ""
-#    for d in parsed_duration:
-#        if d:
-#            duration_str += f"{d[:-1]}:"
-#    duration_str = duration_str.strip(":")
-#    return duration_str
     regex = r'PT(\d+H)?(\d+M)?(\d+S)?'
     match = re.match(regex, duration)
     if not match:
